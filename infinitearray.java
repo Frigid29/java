@@ -7,7 +7,7 @@ public class infinitearray {
     }
     public static int search(int[] ar, int target){
         int start=0;
-        int end=2;
+        int end=1;
         if(ar[start]== target){
             return start;
         }
@@ -16,8 +16,9 @@ public class infinitearray {
         }
 
         while(ar[end]<target){
-            start=end;
-            end=end*end;
+            int newstart=end+1;
+            end=end + 2*(end+1-start);
+            start=newstart;
             if(end>ar.length-1){
                 end =ar.length-1;
             }
