@@ -4,7 +4,6 @@ public class infinitearray {
         int target=5;
         int ans=search(ar, target);
         System.out.println(ans);
-        System.out.println("end");
     }
 
     public static int search(int[] ar, int target){
