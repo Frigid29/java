@@ -1,3 +1,1 @@
-SelectionSort(arr);
-        // InsertionSort(arr);
-        // CountingSort(arr);
+j-1
