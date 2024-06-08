@@ -1,6 +1,6 @@
 public class Count0 {
     public static void main(String[] args) {
-        System.out.println(count(402010));
+        System.out.println(count(30200001));
     }
 
     static int count(int n){
