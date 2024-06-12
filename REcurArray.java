@@ -6,7 +6,7 @@ public class REcurArray {
         change(arr);
         System.out.println(Arrays.toString(arr));
     }
-    public static void change(int[] ar){
+    public static int change(int[] ar){
         ar[0] = 10;
     }
 }
