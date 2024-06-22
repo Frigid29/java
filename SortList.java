@@ -141,5 +141,20 @@ class SortList {
         }else{
             BubbleSort(row-1,0);
         }
-    }    
+    } 
+    public void reverseRec(){
+        ListNode temp=head;
+        reverseRec(temp);
+    }
+    private void reverseRec(ListNode node){
+        if(node==tail){
+            head=tail;
+            return;
+        }
+        reverseRec(node.next);
+        tail.next=node;
+        tail=node;
+        tail.next=null;
+        return;
+    }   
 }

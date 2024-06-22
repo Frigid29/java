@@ -13,6 +13,8 @@ public class ListMain {
         //node.reverseList();
         node.display();
         node.BubbleSort();
+        node.display();        
+        node.reverseRec();
         node.display();
     }
 }
