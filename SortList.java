@@ -1,0 +1,145 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class SortList {
+    ListNode head;
+    ListNode tail;
+    int size=0;
+    public ListNode sortList(ListNode head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+        ListNode mid=middleNode(head);
+        ListNode left=sortList(head);
+        ListNode right= sortList(mid);
+        return merge(left,right);        
+    }
+    public ListNode middleNode(ListNode head) {
+        // this s giving us the middle node, and making middle.prev.next=null;
+        ListNode midprev=null;
+        while(head!=null && head.next!=null){
+            midprev=(midprev==null)?head:midprev.next;
+            head=head.next.next;
+        }
+        ListNode mid=midprev.next;
+        midprev.next=null;
+        return mid;
+    }
+    public ListNode merge(ListNode l1, ListNode l2){
+        ListNode ans= new ListNode();
+        ListNode tail=ans;
+        while(l1!=null && l2!=null){
+            if(l1.val<l2.val){
+                tail.next=l1;
+                l1=l1.next;
+                tail=tail.next;
+            }else{
+                tail.next=l2;
+                l2=l2.next;
+                tail=tail.next;
+            }            
+        }
+        tail.next=(l1!=null)?l1:l2;
+        return ans.next;
+    }
+    class ListNode{
+        private int val;
+        private ListNode next;
+        ListNode(){            
+        }
+        ListNode(int val){
+            this.val=val;
+        }
+        ListNode(int val, ListNode next){
+            this.val=val;
+            this.next=next;
+        }
+    }
+    public void display(){
+        ListNode temp=head;
+        while(temp!=null){
+            System.out.print(temp.val+"-->");
+            temp=temp.next;
+        }
+        System.out.print("END");
+        System.out.println();
+    }
+    public void insert(int val){
+        if(head==null){
+            head=new ListNode(val);
+            tail=head;
+        }else{
+            ListNode temp=new ListNode(val);
+            tail.next=temp;
+            tail=temp;
+        }
+        size++;
+    }
+    public void reverseList() {
+        if( head==null){
+            return;
+        }
+        if(head.next==null){
+            return;
+        }
+        ListNode prev=null;
+        ListNode pres=head;
+        ListNode next=head.next;
+        while(pres!=null){
+            pres.next=prev;
+            prev=pres;
+            pres=next;
+            if(next!=null){
+                next=next.next;
+            }
+        }
+        head=prev;
+    }
+    public ListNode get(int index){
+        ListNode node=head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+    public void BubbleSort(){
+        BubbleSort(size-1,0);
+    }
+    public void BubbleSort(int row, int col){
+        if(row == 0){
+            return;
+        }
+        if(col<row){
+            ListNode first=get(col);
+            ListNode second=get(col+1);
+            if(first.val>second.val){
+                if(first==head){
+                    head=second;
+                    first.next=second.next;
+                    second.next=first;
+                }else if(second==tail){
+                    tail=first;
+                    ListNode prev=get(col-1);
+                    prev.next=second;
+                    first.next=null;
+                    second.next=tail;
+                }else{
+                    ListNode prev=get(col-1);
+                    prev.next=second;
+                    first.next=second.next;
+                    second.next=first;
+                }                                
+            }  
+            BubbleSort(row,col+1);          
+        }else{
+            BubbleSort(row-1,0);
+        }
+    }    
+}
