@@ -156,5 +156,76 @@ class SortList {
         tail=node;
         tail.next=null;
         return;
-    }   
+    }
+    
+    public int getMid(){
+        return getMid(head).val;
+    }
+    public ListNode getMid(ListNode node){
+        ListNode s=node;
+        ListNode f=node;
+        while(f!=null&& f.next!=null){
+            s=s.next;
+            f=f.next.next;
+        }
+        return s;
+    }
+
+//https://leetcode.com/problems/reverse-linked-list-ii/submissions/1297961680/
+
+
+    public void reverseBetween(){
+        reverseBetween(head,2,4);
+    }
+    public void reverseBetween(ListNode head, int left , int right){
+        ListNode prev=null;
+        ListNode current=head;
+        for(int i=0;i<left-1 && current!=null ;i++){
+            prev=current;
+            current=current.next;
+        }
+        ListNode last=prev;
+        ListNode newend=current;
+        ListNode next=current.next;
+        for(int i=0;i<right-left+1;i++){
+            current.next=prev;
+            prev=current;
+            current=next;
+            if(next!=null){
+                next=next.next;
+            }
+        }
+        if(last!=null){
+            last.next=prev;
+        }else{
+            head=prev;
+        }
+        newend.next=current;
+        //return head;
+    }
+
+    //https://leetcode.com/problems/palindrome-linked-list/description/
+    public boolean isPalindrome(){
+        return isPalindrome(head);
+    }
+    public boolean isPalindrome(ListNode head) {
+        ListNode mid=getMid(head);
+        ListNode secondHead=mid;
+        reverseRec(secondHead);
+        ListNode reversehead=secondHead;
+        while(head!=null && secondHead!=null){
+            if(head.val!=secondHead.val){
+                break;
+            }
+            head=head.next;
+            secondHead=secondHead.next;
+        }
+        reverseRec(reversehead);;
+        if(head!=null && secondHead!=null){
+            return true;
+        }
+        return false;
+    }
 }
+
+
