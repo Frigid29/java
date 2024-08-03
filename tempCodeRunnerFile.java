@@ -1,1 +1,3 @@
-j-1
+if(ans.get(i)==1){
+            //     return false;
+            // }
