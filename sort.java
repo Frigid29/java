@@ -33,15 +33,23 @@ public class sort {
     }
 
     public static void InsertionSort(int arr[]){
-        for(int i=0;i<arr.length;i++){
-            int curr=arr[i];
-            int prev=i-1;
-            while(prev>=0 && curr>arr[prev])
-            {
-                arr[prev+1]=arr[prev];
-                prev--;
+        for(int i=1;i<arr.length;i++){
+            // int curr=arr[i];
+            // int prev=i-1;
+            // while(prev>=0 && curr>arr[prev])
+            // {
+            //     arr[prev+1]=arr[prev];
+            //     prev--;
+            // }
+            // arr[prev+1]=curr;
+            
+            int j=i;
+            while(j-1>=0 && arr[j]<arr[j-1]){
+                int t=arr[j];
+                arr[j]=arr[j-1];
+                arr[j-1]=t;
+                j--;
             }
-            arr[prev+1]=curr;
         }
     }
 
@@ -116,9 +124,9 @@ public class sort {
         int arr[]= {3,6,2,1,8,7,4,5,3,1};
         // BubbleSort(arr);
         // SelectionSort(arr);
-        // InsertionSort(arr);
+        InsertionSort(arr);
         // CountingSort(arr);
-        // printarr(arr);
-        System.out.println(Arrays.toString(mergeSort(arr)));
+        printarr(arr);
+        // System.out.println(Arrays.toString(mergeSort(arr)));
     }
 }
