@@ -72,6 +72,41 @@ public class sort {
         }
     }
 
+    public static int[] mergeSort(int[] ar){
+        if(ar.length == 1){
+            return ar;
+        }
+        int mid=ar.length/2;
+        int[] left = mergeSort(Arrays.copyOfRange(ar,0,mid));
+        int[] right = mergeSort(Arrays.copyOfRange(ar,mid,ar.length));
+        return merge(left,right);
+    }
+
+    public static int[] merge(int[] left, int[] right){
+        int[] ans = new int[left.length + right.length];
+        int i=0,j=0,k=0;
+        while(i<left.length && j<right.length){
+            if(left[i]<right[j]){
+                ans[k]=left[i];
+                i++;
+            }else{
+                ans[k]=right[j];
+                j++;
+            }
+            k++;
+        }
+        if(i<left.length){
+            while(i<left.length){
+                ans[k++]=left[i++];
+            }
+        }else{
+            while(j<right.length){
+                ans[k++]=right[j++];
+            }
+        }
+        return ans;
+    }
+
     public static void printarr(int arr[]){
         for(int i=0;i<arr.length;i++){
             System.out.print(arr[i]+" ");
@@ -83,7 +118,8 @@ public class sort {
         // BubbleSort(arr);
         // SelectionSort(arr);
         // InsertionSort(arr);
-        CountingSort(arr);
-        printarr(arr);
+        // CountingSort(arr);
+        // printarr(arr);
+        System.out.println(Arrays.toString(mergeSort(arr)));
     }
 }
