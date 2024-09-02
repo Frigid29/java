@@ -80,15 +80,16 @@ public class Heaps2<T extends Comparable<T>>{
     }
     public static void main(String[] args) throws Exception{
         Heaps2<Integer> heap = new Heaps2<Integer>();
+        heap.insert(4);
+        heap.insert(1);
+        heap.insert(3);
+        heap.insert(2);
+        heap.insert(16);
+        heap.insert(9);
         heap.insert(10);
-        heap.insert(20);
-        heap.insert(15);
-        heap.insert(5);
-        heap.insert(30);
-        heap.insert(25);
-        heap.insert(35);
-        heap.insert(40);
-        System.out.println(heap.remove());
+        heap.insert(14);
+        heap.insert(8);
+        heap.insert(7);
         ArrayList<Integer> sorted=heap.heapsort();
         System.out.println(sorted);
     }
