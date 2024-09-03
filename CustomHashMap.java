@@ -1,7 +1,7 @@
 import java.util.*;
 import java.math.*;
 public class CustomHashMap<T extends Comparable<T>> {
-    private class Entity<T extends Comparable<T>>{
+    private class Entity<T>{
         T key;
         T value;
         public Entity(T key, T value){
