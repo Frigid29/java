@@ -42,7 +42,7 @@ public class MinimumInRotatedArray {
                 right = mid;
             }
             mid = left + (right - left) / 2;
-            if((nums[left]>=nums[mid])&&(nums[mid]>= nums[right])){
+            if(mid == left || mid == right){
                 //only two elements are remaining out of which one is the desired answer. eg: [5,1]
                 mid = Math.min(nums[left], nums[right]);
                 break;
