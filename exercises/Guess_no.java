@@ -22,6 +22,7 @@ public class Guess_no {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nEnter your guess: ");
         guess = sc.nextInt();
+        
     }
 
     public boolean isCorrectGuess(){

@@ -6,7 +6,7 @@ public class dec_to_bin {
         int count=0;//for power
         for(int i=num;i>0;i=i/2){
             bin=bin+((i%2)*(int)(Math.pow(10,count)));
-            c++;
+            count++;
         }
         return bin;
     }

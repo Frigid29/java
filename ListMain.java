@@ -18,7 +18,7 @@ public class ListMain {
         //node.display();
         //node.reverseBetween();
         node.display();
-        node.reverserec();
+        // node.reverserec();
         //System.out.println(node.isPalindrome());
         node.display();
     }

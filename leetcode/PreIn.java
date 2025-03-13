@@ -23,7 +23,6 @@ public class PreIn {
         }
         node.left = makeTree(preorder, inorder, map, left, inorderIndex -1, index);
         node.right = makeTree(preorder, inorder, map, inorderIndex+1, right, index);
-
         return node;
     }
 }
